@@ -18,7 +18,7 @@
     "prebuild": "v6.1.0",
     "tape": "^3.5.0"
   },
-  "description": "",
+  "description": "Very small cross-platform library, to create a screenshot",
   "gypfile": true,
   "repository": {
     "type": "git",
