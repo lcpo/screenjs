@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm build ."
+    "build": "npm build .",
+    "install": "node-gyp rebuild"
   },
-  "author": "",
+  "author": "S.S.Korotaev <siendsi@gmail.com>",
+  "email": "siendsi@gmail.com",
+  "url": "https://github.com/lcpo/screenjs",
   "license": "MIT",
   "dependencies": {
     "nan": "^2.2.1",
@@ -15,5 +18,14 @@
     "prebuild": "v6.1.0",
     "tape": "^3.5.0"
   },
-  "description": ""
+  "description": "",
+  "gypfile": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcpo/screenjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lcpo/screenjs/issues"
+  },
+  "homepage": "https://github.com/lcpo/screenjs#readme"
 }
