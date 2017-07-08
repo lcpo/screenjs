@@ -1,6 +1,10 @@
 # screenjs
 >Very small, Very fast, cross-platform library, to create a screenshot
 screenjs supports Mac, Windows, and Linux(X11).
+
+### What is created for?
+For one project, I needed to make screenshots very quickly, and save them in an array of numbers (intmap), also it was necessary to sometimes save screenshots to the PNG file ...
+
 ## Contents
 - [Installation](#installation)
 - [API](#API)
@@ -25,7 +29,7 @@ sudo apt-get install xorg-dev
 
 ```
 
-### After all this: 
+### After all this:
 `npm install screenjs --save` or  `npm install -g screenjs --save` (from global)
 
 ## API:
@@ -52,7 +56,7 @@ return CPP bitmap object
 
 
 ```js
-Screen.Capture(x, y, width, height) 
+Screen.Capture(x, y, width, height)
 ```
 return CPP bitmap object
 
@@ -120,8 +124,32 @@ Bitmap.[prototype].writeSync(pathFile)
 save from file Sync
 
 ## Examples:
+
 ```js
+const Screen = require('screenjs').Screen;
+const Bitmap = require('screenjs').Bitmap;
+
+const pic = Screen.Capture(); // It will work very quickly
+console.log(pic); // And this will work slowly
+const image = new Bitmap(pic); // It will work very quickly
+console.log(image); // And this will work slowly
 ```
+
+```js
+const Screen = require('screenjs').Screen;
+const Bitmap = require('screenjs').Bitmap;
+
+const pic = Screen.CaptureGetImage(); // It will work very quickly
+const image = new Bitmap(pic); // It will work very quickly
+image.writeSync('test.png'); //And this will work very slowly
+```
+
+```js
+const Screen = require('screenjs').Screen;
+
+const pic = Screen.CaptureGetIntMap(); // It will work very quickly
+console.log(image.intmap.length); //It will work very quickly
+```
+
 ## License:
 MIT
-
