@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "nan": "^2.2.1",
+    "pngjs": "^3.0.0",
     "prebuild-install": "^2.1.1"
   },
   "devDependencies": {
