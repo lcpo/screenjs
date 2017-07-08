@@ -11,7 +11,7 @@
       '-Wbad-function-cast',
       '-Wdisabled-optimization'
     ],
-    
+
     'conditions': [
       ['OS == "mac"', {
         'include_dirs': [
@@ -29,14 +29,14 @@
           ]
         }
       }],
-      
+
       ['OS == "linux"', {
         'link_settings': {
           'libraries': [
             '-lX11'
           ]
         },
-        
+
         'sources': [
           'libs/xdisplay.c'
         ]
@@ -46,10 +46,9 @@
         'defines': ['IS_WINDOWS']
       }]
     ],
-    
+
     'sources': [
       'screen.cc',
-      'libs/test.c',
       'libs/screen.c',
       'libs/screengrab.c',
       'libs/MMBitmap.c'

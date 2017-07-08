@@ -42,14 +42,3 @@ void XCloseMainDisplay(void)
 		mainDisplay = NULL;
 	}
 }
-
-char *getXDisplay(void)
-{
-	return displayName;
-}
-
-void setXDisplay(char *name)
-{
-	displayName = strdup(name);
-	hasDisplayNameChanged = 1;
-}
