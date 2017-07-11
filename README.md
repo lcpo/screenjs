@@ -7,7 +7,7 @@ For one project, I needed to make screenshots very quickly, and save them in an 
 
 ## Contents
 - [Installation](#installation)
-- [API](#API)
+- [API](#api)
 - [Examples](#examples)
 - [License](#license)
 
@@ -44,84 +44,130 @@ const Bitmap = require('screenjs').Bitmap; // Additional functionality, saving t
 ### Methods:
 
 ```js
-Screen.getSize()
+Screen.getSize();
+// Will return { width: 1366, height: 768 };
+
 ```
-return CPP bitmap object
 
 
 ```js
-Screen.Capture()
+Screen.Capture();
+/* Will return
+{ width: 1366,
+  height: 768,
+  byteWidth: 5464,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  image: <Buffer ... >,
+  intmap: Uint32Array [...] };
+*/
 ```
-return CPP bitmap object
+
+```js
+Screen.Capture(x, y, width, height);
+// Screen.Capture(10, 15, 100, 100);
+/* Will return
+{ width: 100,
+  height: 100,
+  byteWidth: 400,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  image: <Buffer ... >,
+  intmap: Uint32Array [...] };
+*/
+```
+
+```js
+Screen.CaptureGetIntMap();
+/* Will return
+{ width: 1366,
+  height: 768,
+  byteWidth: 5464,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  intmap: Uint32Array [...] };
+*/
+```
+
+```js
+Screen.CaptureGetIntMap(x, y, width, height);
+// Screen.CaptureGetIntMap(10, 15, 100, 100);
+/* Will return
+{ width: 100,
+  height: 100,
+  byteWidth: 400,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  intmap: Uint32Array [...] };
+*/
+```
 
 
 ```js
-Screen.Capture(x, y, width, height)
+Screen.CaptureGetImage();
+/* Will return
+{ width: 1366,
+  height: 768,
+  byteWidth: 5464,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  image: <Buffer ... > };
+*/
 ```
-return CPP bitmap object
 
 
 ```js
-Screen.CaptureGetIntMap()
+Screen.CaptureGetImage(x, y, width, height);
+// Screen.CaptureGetImage(10, 15, 100, 100);
+/* Will return
+{ width: 100,
+  height: 100,
+  byteWidth: 400,
+  bitsPerPixel: 32,
+  bytesPerPixel: 4,
+  image: <Buffer ... > };
+*/
 ```
-return CPP bitmap object
 
 
 ```js
-Screen.CaptureGetIntMap(x, y, width, height)
+Bitmap(img);
+// return js bitmap object
 ```
-return CPP bitmap object
 
 
 ```js
-Screen.CaptureGetImage()
+Bitmap.rgbaToInt(red, green, blue, alpha);
+// return number
 ```
-return CPP bitmap object
 
 
 ```js
-Screen.CaptureGetImage(x, y, width, height)
+Bitmap.intToRGBA(num);
+// return rgba object
 ```
-return CPP bitmap object
+
+```js
+Bitmap.getBuffer();
+// return buffer PNG image
+```
+
+```js
+Bitmap.getBase64();
+// return base64 string (data:image/png;base64,...etc.)
+```
+
+```js
+Bitmap.write(pathFile, callback);
+// save from file Async
+```
 
 
 ```js
-Bitmap(img)
+Bitmap.writeSync(pathFile);
+// save from file Sync
 ```
-return js bitmap object
 
-
-```js
-Bitmap.rgbaToInt(red, green, blue, alpha)
-```
-return number
-
-
-```js
-Bitmap.intToRGBA(num)
-```
-return rgba object
-
-```js
-Bitmap.[prototype].getBuffer()
-```
-return buffer PNG image
-
-```js
-Bitmap.[prototype].getBase64()
-```
-return base64 string (data:image/png;base64,...etc.)
-
-```js
-Bitmap.[prototype].write(pathFile, callback)
-```
-save from file Async
-
-
-```js
-Bitmap.[prototype].writeSync(pathFile)
-```
-save from file Sync
 
 ## Examples:
 
@@ -131,7 +177,7 @@ const Bitmap = require('screenjs').Bitmap;
 
 const pic = Screen.Capture(); // It will work very quickly
 console.log(pic); // And this will work slowly
-const image = new Bitmap(pic); // It will work very quickly
+const image = Bitmap(pic); // It will work very quickly
 console.log(image); // And this will work slowly
 ```
 
@@ -140,7 +186,7 @@ const Screen = require('screenjs').Screen;
 const Bitmap = require('screenjs').Bitmap;
 
 const pic = Screen.CaptureGetImage(); // It will work very quickly
-const image = new Bitmap(pic); // It will work very quickly
+const image = Bitmap(pic); // It will work very quickly
 image.writeSync('test.png'); //And this will work very slowly
 ```
 
